@@ -21,7 +21,12 @@ namespace PresentationApp.Controllers
         {
             //store in db or inform the person in charge or email etc
 
-            ViewData["feedback"] = "Thanks for your query.  We will revert back with a reply very soon";
+            if (string.IsNullOrEmpty(query) || string.IsNullOrEmpty(email))
+            {
+                ViewData["warning"] = "One or more of the fields are empty";
+            }
+            else
+                ViewData["feedback"] = "Thanks for your query.  We will revert back with a reply very soon";
 
 
             return View();
